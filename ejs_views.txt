@@ -1,0 +1,5 @@
+1. install ejs
+2. app.set("viewengine", ejs); // index file (middleware)
+3. They are simple html files
+4. Require & Set Path 
+  -> app.set("views", path.resolve("./views"));

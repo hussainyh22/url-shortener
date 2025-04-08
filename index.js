@@ -1,9 +1,11 @@
 // https://zelark.github.io/nano-id-cc/
 const express = require("express");
 const app = express();
-const PORT = 9000;
+const PORT = 3002;
+const path = require("path");
 const {connectMongoDb} = require("./connection");
 const urlRoute = require("./routes/url");
+const staticRoute = require("./routes/url/new1");
 
 // mongoose.connect('mongodb://localhost:27017/url-shortener')
 // .then(()=> console.log(`Connection Established Successfully!`))
@@ -11,6 +13,9 @@ const urlRoute = require("./routes/url");
 
 app.use(express.urlencoded({extended:true}));
 app.use("/url", urlRoute);
+app.use("/", staticRoute);
+app.set("view engine", "ejs");
+app.set("views", path.resolve("./views"));
 // console.log(typeof urlRoute); // Should print 'function'
 
 
